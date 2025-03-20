@@ -7,14 +7,15 @@ $error = '';
 if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
+    $role     = $_POST['role'];
 
     if (empty($username) || empty($password)) {
         $error = "Username dan password wajib diisi.";
     } else {
-        // Contoh query, pastikan tabel users sudah ada dan simpan password secara hash
-        $query = "SELECT * FROM users WHERE username = ? AND password = md5(?)";
+        // Pastikan tabel users memiliki kolom: username, password, role, dan nama (untuk tampilan)
+        $query = "SELECT * FROM users WHERE username = ? AND password = md5(?) AND role = ?";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("ss", $username, $password);
+        $stmt->bind_param("sss", $username, $password, $role);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows == 1) {
@@ -23,7 +24,7 @@ if (isset($_POST['login'])) {
             header("Location: menu_utama.php");
             exit();
         } else {
-            $error = "Login gagal, username atau password salah.";
+            $error = "Login gagal, pastikan username, password, dan role yang dipilih benar.";
         }
     }
 }
@@ -47,6 +48,13 @@ if (isset($_POST['login'])) {
         <br>
         <label>Password:</label>
         <input type="password" name="password" required>
+        <br>
+        <label>Role:</label>
+        <select name="role" required>
+            <option value="">-- Pilih Role --</option>
+            <option value="mahasiswa">Mahasiswa</option>
+            <option value="dosen">Dosen</option>
+        </select>
         <br>
         <input type="submit" name="login" value="Login">
     </form>

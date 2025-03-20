@@ -5,7 +5,7 @@ require_once 'config.php';
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$database = 'UTS';
+$database = 'UTS_S4';
 
 $db = new mysqli($host, $user, $password, $database);
 
