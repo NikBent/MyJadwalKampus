@@ -1,6 +1,6 @@
 <?php
 // index.php
-require 'config.php';
+require 'config/config.php';
 
 // Pastikan user sudah login
 if (!isset($_SESSION['username'])) {

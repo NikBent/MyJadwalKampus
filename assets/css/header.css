@@ -1,0 +1,38 @@
+/* header.css */
+
+/* Atur agar seluruh konten di body terpusat (opsional) */
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* Styling untuk header */
+.header {
+    background: linear-gradient(#5ae6fc, #c4f5fc);
+    color: #2C17FF;
+    padding: 20px;
+}
+
+/* Pastikan judul dan teks lainnya di dalam header tidak memiliki margin yang mengganggu */
+.header h1,
+.header p {
+    margin: 20px 0;
+    padding: 16px;
+}
+
+/* Jika ingin memastikan seluruh teks dalam halaman selalu center, bisa tambah aturan berikut: */
+* {
+    text-align: center;
+}
+
+#logo {
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  .header h1 {
+    display: inline-block;
+    vertical-align: middle;
+  }

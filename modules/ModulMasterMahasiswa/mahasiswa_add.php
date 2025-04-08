@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
-include 'header.php';
+include __DIR__ . '/../header.php';
 ?>
     <h2>Tambah Mahasiswa</h2>
     <form method="post" action="mahasiswa_add.php">
@@ -49,4 +49,4 @@ include 'header.php';
         <button type="submit">Simpan</button>
         <a href="mahasiswa_list.php">Batal</a>
     </form>
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../footer.php'; ?>

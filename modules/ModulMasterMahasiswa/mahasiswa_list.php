@@ -9,7 +9,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
 $sql = "SELECT * FROM ms_mahasiswa";
 $result = mysqli_query($conn, $sql);
 // output halaman
-include 'header.php';
+include __DIR__ . '/../header.php';
 ?>
     <h2>Data Mahasiswa</h2>
     <p><a href="mahasiswa_add.php">Tambah Mahasiswa</a> | <a href="index.php">Menu Utama</a></p>
@@ -44,4 +44,4 @@ include 'header.php';
         </tr>
         <?php endwhile; ?>
     </table>
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../footer.php'; ?>

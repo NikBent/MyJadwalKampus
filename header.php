@@ -8,12 +8,13 @@ if (!isset($_SESSION)) {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Aplikasi Kampus</title>
-    <!-- Tambahkan CSS/JS jika diperlukan -->
+    <title>MyJadwalKampus</title>
+    <link rel="stylesheet" href="assets/css/header.css"> <!-- sesuaikan path sesuai struktur folder -->
+    <!-- Tambahkan CSS/JS lainnya jika diperlukan -->
 </head>
 <body>
     <div class="header">
-        <h1>Aplikasi Kampus</h1>
+        <h1>MyJadwalKampus</h1>
         <?php if(isset($_SESSION['username'])): ?>
             <p>Selamat datang, <?php echo htmlspecialchars($_SESSION['username']); ?> | <a href="logout.php">Sign Out</a></p>
         <?php endif; ?>

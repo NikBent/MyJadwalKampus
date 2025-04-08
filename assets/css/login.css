@@ -1,59 +1,76 @@
-/* assets/css/login.css */
+/* login.css */
+
+/* Latar belakang halaman login */
 body {
-    background: #e8f0fe;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f0fbff; /* very light blue */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.login-container {
+  }
+  
+  /* Container form login */
+  .login-container {
     max-width: 400px;
-    margin: 100px auto;
+    margin: 80px auto;
     background: #ffffff;
-    padding: 40px;
+    border: 2px solid #29E1FF;       /* accent light blue */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.login-container h1 {
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Judul */
+  .login-container h1 {
     text-align: center;
-    margin-bottom: 24px;
-    color: #333;
-}
-
-.login-container label {
+    color: #2354FA;                  /* medium blue */
+    margin-bottom: 20px;
+  }
+  
+  /* Label form */
+  .login-container label {
     display: block;
-    margin-bottom: 8px;
-    color: #555;
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"],
-.login-container select {
+    margin-top: 12px;
+    color: #2354FA;
+    font-weight: bold;
+  }
+  
+  /* Input dan select */
+  .login-container input[type="text"],
+  .login-container input[type="password"],
+  .login-container select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
+    margin-top: 6px;
+    border: 1px solid #29E1FF;
     border-radius: 4px;
-}
-
-.login-container input[type="submit"] {
+    font-size: 14px;
+  }
+  
+  /* Tombol submit */
+  .login-container input[type="submit"] {
     width: 100%;
     padding: 12px;
-    background: #4285f4;
+    margin-top: 20px;
+    background: linear-gradient(to right, #2C17FF, #29E1FF);
     border: none;
-    color: #fff;
-    font-size: 16px;
     border-radius: 4px;
+    color: #ffffff;
+    font-size: 16px;
     cursor: pointer;
-}
-
-.login-container input[type="submit"]:hover {
-    background: #357ae8;
-}
-
-.error {
-    color: red;
-    margin-bottom: 20px;
+    transition: background 0.3s ease;
+  }
+  
+  .login-container input[type="submit"]:hover {
+    background: #2354FA;
+  }
+  
+  /* Pesan error */
+  .login-container .error {
+    color: #d8000c;
+    background-color: #ffbaba;
+    padding: 8px;
+    border-radius: 4px;
     text-align: center;
-}
+    margin-bottom: 12px;
+  }
+  
