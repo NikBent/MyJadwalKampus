@@ -7,7 +7,7 @@ $error = '';
 if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
-    $role     = $_POST['role'];
+    $role = $_POST['role'];
 
     // validasi wajib diisi
     if ($username === '' || $password === '' || $role === '') {
@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
                   WHERE username = ? 
                     AND password = MD5(?) 
                     AND role = ?";
-        $stmt = $db->prepare($query);
+        $stmt = $conn->prepare($query);
         $stmt->bind_param("sss", $username, $password, $role);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -27,14 +27,14 @@ if (isset($_POST['login'])) {
             $user = $result->fetch_assoc();
             // simpan session
             $_SESSION['username'] = $user['username'];
-            $_SESSION['role']     = $user['role'];
+            $_SESSION['role'] = $user['role'];
 
             // redirect sesuai role
-            if ($user['role'] === 'admin') {
-                header("Location: index.php");
+            if ($user['role'] === 'Admin') {
+                header("Location: menu_admin.php");
             } else {
                 // dosen & mahasiswa sama‐sama ke laporan.php
-                header("Location: laporan.php");
+                header("Location: ./modules/ModulLaporan/laporan.php");
             }
             exit();
         } else {
