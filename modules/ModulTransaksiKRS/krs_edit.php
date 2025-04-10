@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 include '../../header.php';
 ?>
+<main style="min-height: 80vh;"> 
     <h2>Edit KRS</h2>
     <form method="post" action="krs_edit.php?krs_id=<?php echo $krs_id; ?>">
         <label>Mata Kuliah:</label><br>
@@ -125,4 +126,5 @@ include '../../header.php';
         <button type="submit">Update</button>
         <a href="krs_list.php">Batal</a>
     </form>
+</main>
 <?php include '../../footer.php'; ?>

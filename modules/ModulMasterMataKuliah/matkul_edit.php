@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // output halaman
 include '../../header.php';
 ?>
+<main style="min-height: 80vh;"> 
     <h2>Edit Mata Kuliah</h2>
     <form method="post" action="matkul_edit.php?kode_mk=<?php echo $kode_mk; ?>">
         <label>Nama Mata Kuliah:</label><br>
@@ -49,4 +50,5 @@ include '../../header.php';
         <button type="submit">Update</button>
         <a href="matkul_list.php">Batal</a>
     </form>
+</main>
 <?php include '../../footer.php'; ?>

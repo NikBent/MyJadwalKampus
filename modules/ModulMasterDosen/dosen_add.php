@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // output halaman
 include 'header.php'; 
 ?>
+<main style="min-height: 80vh;"> 
     <h2>Tambah Dosen</h2>
     <form method="post" action="dosen_add.php">
         <label>NIK:</label><br>
@@ -45,4 +46,5 @@ include 'header.php';
         <button type="submit">Simpan</button>
         <a href="dosen_list.php">Batal</a>
     </form>
+</main>
 <?php include 'footer.php'; ?>

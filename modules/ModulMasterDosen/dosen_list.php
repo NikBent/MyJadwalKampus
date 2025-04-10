@@ -13,6 +13,7 @@ $result = mysqli_query($conn, $sql);
 // output halaman
 include '../../header.php';
 ?>
+    <main style="min-height: 80vh;"> 
     <h2>Data Dosen</h2>
     <p><a href="dosen_add.php">Tambah Dosen</a> | <a href="../../menu_admin.php">Menu Utama</a></p>
     <table border="1" cellpadding="5" cellspacing="0">
@@ -44,4 +45,5 @@ include '../../header.php';
         </tr>
         <?php endwhile; ?>
     </table>
+    </main>
 <?php include '../../footer.php'; ?>

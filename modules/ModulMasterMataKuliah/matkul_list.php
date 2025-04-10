@@ -11,13 +11,7 @@ $result = mysqli_query($conn, $sql);
 // output halaman
 include '../../header.php';
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Data Mata Kuliah</title>
-</head>
-<body>
+<main style="min-height: 80vh;"> 
     <h2>Data Mata Kuliah</h2>
     <p><a href="matkul_add.php">Tambah Mata Kuliah</a> | <a href="../../menu_admin.php">Menu Utama</a></p>
     <table border="1" cellpadding="5" cellspacing="0">
@@ -43,4 +37,5 @@ include '../../header.php';
         </tr>
         <?php endwhile; ?>
     </table>
+    </body>
 <?php include '../../footer.php'; ?>

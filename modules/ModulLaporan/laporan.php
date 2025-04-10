@@ -57,11 +57,10 @@ if (mysqli_num_rows($result) == 0) {
     exit();
 }
 
-include './header.php';
+include '../../header.php';
 ?>
-
+<main style="min-height: 80vh;"> 
 <h2>Laporan Jadwal</h2>
-
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
         <?php if ($role == 'admin'): ?>
@@ -111,5 +110,6 @@ include './header.php';
     </tr>
     <?php endwhile; ?>
 </table>
+</main>
 
 <?php include '../../footer.php'; ?>

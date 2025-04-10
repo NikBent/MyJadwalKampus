@@ -9,8 +9,8 @@ if (!isset($_SESSION)) {
 <head>
     <meta charset="UTF-8">
     <title>MyJadwalKampus</title>
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/header.css"> 
+    <link rel="stylesheet" href="/MyJadwalKampus/css/footer.css">
+    <link rel="stylesheet" href="/MyJadwalKampus/css/header.css"> 
     <?php
 $styles = [
     'login_css' => 'css/login.css',
