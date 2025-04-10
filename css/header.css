@@ -24,9 +24,11 @@ body {
 }
 
 .header p {
+    text-align: right;
+    width: 100%; 
     margin: 10px 0 0;
     font-size: 1.5rem;
-    color: beige;
+    color: rgb(242, 242, 242);
     margin-left: auto;
 }
 
@@ -35,6 +37,8 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
 }
 
 

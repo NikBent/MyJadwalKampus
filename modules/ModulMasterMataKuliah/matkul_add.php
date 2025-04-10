@@ -8,9 +8,9 @@ if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $kode_mk   = mysqli_real_escape_string($conn, $_POST['kode_mk']);
-    $nama      = mysqli_real_escape_string($conn, $_POST['nama_mk']);
+    $nama_mk      = mysqli_real_escape_string($conn, $_POST['nama_mk']);
     $sks       = mysqli_real_escape_string($conn, $_POST['sks']);
-    $user_input= mysqli_real_escape_string($conn, $_SESSION['username']);
+    $user_input= mysqli_real_escape_string($conn, $_SESSION['user']['username']);
     $tgl_input = date('Y-m-d H:i:s');
 
     $sql = "INSERT INTO ms_matkul (kode_mk, nama_mk, sks, user_input, tgl_input)

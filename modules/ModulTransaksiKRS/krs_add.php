@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nim      = mysqli_real_escape_string($conn, $_POST['nim']);
     $hari     = mysqli_real_escape_string($conn, $_POST['hari']);
     $ruang    = mysqli_real_escape_string($conn, $_POST['ruang']);
-    $user_input = mysqli_real_escape_string($conn, $_SESSION['username']);
+    $user_input = mysqli_real_escape_string($conn, $_SESSION['user']['username']);
     $tgl_input  = date('Y-m-d H:i:s');
 
     $sql = "INSERT INTO krs (kode_mk, nik, nim, hari, ruang, user_input, tgl_input)

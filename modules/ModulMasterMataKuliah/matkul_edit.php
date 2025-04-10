@@ -22,13 +22,13 @@ if (!$matkul) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nama      = mysqli_real_escape_string($conn, $_POST['nama_mk']);
+    $nama_mk      = mysqli_real_escape_string($conn, $_POST['nama_mk']);
     $sks       = mysqli_real_escape_string($conn, $_POST['sks']);
-    $user_input= mysqli_real_escape_string($conn, $_SESSION['username']);
+    $user_input= mysqli_real_escape_string($conn, $_SESSION['user']['username']);
     $tgl_input = date('Y-m-d H:i:s');
 
     $sql_update = "UPDATE ms_matkul SET 
-        nama_mk='$nama', sks='$sks', sem='$sem', user_input='$user_input', tgl_input='$tgl_input'
+        nama_mk='$nama_mk', sks='$sks',  user_input='$user_input', tgl_input='$tgl_input'
         WHERE kode_mk='$kode_mk'";
     if (mysqli_query($conn, $sql_update)) {
         header("Location: matkul_list.php");

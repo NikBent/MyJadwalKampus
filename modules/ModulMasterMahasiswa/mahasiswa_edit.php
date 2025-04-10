@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $no_Hp      = mysqli_real_escape_string($conn, $_POST['no_Hp']);
     $alamat     = mysqli_real_escape_string($conn, $_POST['alamat']);
     $angkatan   = mysqli_real_escape_string($conn, $_POST['angkatan']);
-    $user_input = mysqli_real_escape_string($conn, $_SESSION['username']);
+    $user_input = mysqli_real_escape_string($conn, $_SESSION['user']['username']);
     $tgl_input  = date('Y-m-d H:i:s');
 
     $sql_update = "UPDATE ms_mahasiswa SET 

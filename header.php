@@ -40,5 +40,7 @@ foreach ($styles as $key => $href) {
                 $greeting = "Selamat Malam";
             }
             ?>
-            <p><?php echo $greeting . ', ' . htmlspecialchars($_SESSION['user']['username']) . '!'; ?></p>
+<?php if (basename($_SERVER['PHP_SELF']) !== 'login.php'): ?>
+    <p><?php echo $greeting . ', ' . htmlspecialchars($_SESSION['user']['username']) . '!'; ?></p>
+<?php endif; ?>     
     </div>

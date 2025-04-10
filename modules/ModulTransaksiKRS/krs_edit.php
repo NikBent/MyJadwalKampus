@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nim      = mysqli_real_escape_string($conn, $_POST['nim']);
     $hari     = mysqli_real_escape_string($conn, $_POST['hari']);
     $ruang    = mysqli_real_escape_string($conn, $_POST['ruang']);
-    $user_input = mysqli_real_escape_string($conn, $_SESSION['username']);
+    $user_input = mysqli_real_escape_string($conn, $_SESSION['user']['username']);
     $tgl_input  = date('Y-m-d H:i:s');
 
     $sql_update = "UPDATE krs SET 
@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_query($conn, $sql_update)) {
         // Log update
         $log_sql = "INSERT INTO logs (user, action, krs_id, tgl_log) VALUES ('$user_input', 'Update KRS', '$krs_id', '$tgl_input')";
-        mysqli_query($conn, $log_sql);
         header("Location: krs_list.php");
         exit();
     } else {
@@ -57,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nim      = mysqli_real_escape_string($conn, $_POST['nim']);
     $hari     = mysqli_real_escape_string($conn, $_POST['hari']);
     $ruang    = mysqli_real_escape_string($conn, $_POST['ruang']);
-    $user_input = mysqli_real_escape_string($conn, $_SESSION['username']);
+    $user_input = mysqli_real_escape_string($conn, $_SESSION['user']['username']);
     $tgl_input  = date('Y-m-d H:i:s');
 
     $sql_update = "UPDATE krs SET 
@@ -83,7 +82,7 @@ include '../../header.php';
             while($row = mysqli_fetch_assoc($matkul)):
             ?>
                 <option value="<?php echo $row['kode_mk']; ?>" <?php echo ($row['kode_mk'] == $krs['kode_mk']) ? 'selected' : ''; ?>>
-                    <?php echo $row['nama']; ?>
+                    <?php echo $row['nama_mk']; ?>
                 </option>
             <?php endwhile; ?>
         </select><br>

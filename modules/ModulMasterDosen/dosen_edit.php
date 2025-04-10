@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $no_hp     = mysqli_real_escape_string($conn, $_POST['no_hp']);
     $gelar     = mysqli_real_escape_string($conn, $_POST['gelar']);
     $lulusan   = mysqli_real_escape_string($conn, $_POST['lulusan']);
-    $user_input= mysqli_real_escape_string($conn, $_SESSION['username']);
+    $user_input= mysqli_real_escape_string($conn, $_SESSION['user']['username']);
     $tgl_input = date('Y-m-d H:i:s');
 
     $sql_update = "UPDATE ms_dosen SET 

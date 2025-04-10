@@ -37,5 +37,5 @@ include '../../header.php';
         </tr>
         <?php endwhile; ?>
     </table>
-    </body>
+</main>
 <?php include '../../footer.php'; ?>
