@@ -1,8 +1,8 @@
 <?php
 // mahasiswa_delete.php
 require '../config/config.php';
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
+    header("Location: ../../login.php");
     exit();
 }
 

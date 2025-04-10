@@ -1,5 +1,6 @@
 <?php
 // login.php
+
 require_once 'config/config.php';
 
 $error = '';
@@ -25,18 +26,20 @@ if (isset($_POST['login'])) {
 
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
-            // simpan session
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
-
+            // simpan session sebagai array
+            $_SESSION['user'] = [
+                'username' => $user['username'],
+                'role' => strtolower($user['role']),
+            ];
+        
             // redirect sesuai role
-            if ($user['role'] === 'Admin') {
+            if ($_SESSION['user']['role'] === 'admin') {
                 header("Location: menu_admin.php");
             } else {
-                // dosen & mahasiswa sama‐sama ke laporan.php
                 header("Location: ./modules/ModulLaporan/laporan.php");
             }
             exit();
+
         } else {
             $error = "Login gagal: Username, Password, atau Role tidak sesuai.";
         }

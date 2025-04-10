@@ -15,7 +15,7 @@ if (!isset($_SESSION)) {
 <body>
     <div class="header">
         <h1>MyJadwalKampus</h1>
-        <?php if(isset($_SESSION['username'])): ?>
-            <p>Selamat datang, <?php echo htmlspecialchars($_SESSION['username']); ?> | <a href="logout.php">Sign Out</a></p>
+        <?php if(isset($_SESSION['user'])): ?>
+            <p>Selamat datang, <?php echo htmlspecialchars($_SESSION['user']['username']); ?> | <a href="./logout.php">Sign Out</a></p>
         <?php endif; ?>
     </div>

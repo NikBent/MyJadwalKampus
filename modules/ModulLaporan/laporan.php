@@ -1,80 +1,116 @@
 <?php 
-// laporan.php
-require 'config.php';
-if (!isset($_SESSION['username'])) {
+require('../../config/config.php');
+
+if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit();
 }
 
-$role = $_SESSION['role'];
-$username = $_SESSION['username'];
+$role = $_SESSION['user']['role']; 
+$username = $_SESSION['user']['username'];
 
 if ($role == 'dosen') {
-    // Ambil jadwal mengajar dosen
-    // Misalnya, pencocokan berdasarkan nik di tabel ms_dosen (anda harus memastikan bahwa username login sama dengan nama atau nik)
-    // Untuk contoh, anggap username login adalah nik dosen.
-    $nik = $username;
-    $sql = "SELECT k.*, m.nama AS nama_mk, m.sks, k.hari
-            FROM krs k
-            LEFT JOIN ms_matkul m ON k.kode_mk = m.kode_mk
-            WHERE k.nik = '$nik'";
-    $result = mysqli_query($conn, $sql);
-} elseif ($role == 'mahasiswa') {
-    // Ambil jadwal kuliah mahasiswa
-    // Anggap username login adalah nim mahasiswa
-    $nim = $username;
-    $sql = "SELECT k.*, m.nama AS nama_mk, m.sks, k.hari, d.nama AS nama_dosen
+    $nama_dosen = $username;
+
+    // Ambil nik berdasarkan nama dosen
+    $queryDosen = mysqli_query($conn, "SELECT nik FROM ms_dosen WHERE nama = '$nama_dosen'");
+    $dosen = mysqli_fetch_assoc($queryDosen);
+    $nik = $dosen['nik'];
+    
+    $sql = "SELECT k.*, m.kode_mk, m.nama_mk, m.sks, k.hari, d.nama AS nama_dosen
             FROM krs k
             LEFT JOIN ms_matkul m ON k.kode_mk = m.kode_mk
             LEFT JOIN ms_dosen d ON k.nik = d.nik
+            WHERE k.nik = '$nik'";
+
+} elseif ($role == 'mahasiswa') {
+    $nama_mhs = $username;
+    $queryMhs = mysqli_query($conn, "SELECT nim FROM ms_mahasiswa WHERE nama = '$nama_mhs'");
+    $mhs = mysqli_fetch_assoc($queryMhs);
+    $nim = $mhs['nim'];
+
+    $sql = "SELECT k.*, m.kode_mk, m.nama_mk, m.sks, k.hari, d.nama AS nama_dosen, s.nama AS nama_mhs
+            FROM krs k
+            LEFT JOIN ms_matkul m ON k.kode_mk = m.kode_mk
+            LEFT JOIN ms_dosen d ON k.nik = d.nik
+            LEFT JOIN ms_mahasiswa s ON k.nim = s.nim
             WHERE k.nim = '$nim'";
-    $result = mysqli_query($conn, $sql);
-} else {
-    // Untuk admin, tampilkan seluruh laporan
-    $sql = "SELECT k.*, m.nama AS nama_mk, m.sks, k.hari, d.nama AS nama_dosen, s.nama AS nama_mhs
+
+} else { // Admin
+    $sql = "SELECT k.*, m.kode_mk, m.nama_mk, m.sks, k.hari, d.nama AS nama_dosen, s.nama AS nama_mhs
             FROM krs k
             LEFT JOIN ms_matkul m ON k.kode_mk = m.kode_mk
             LEFT JOIN ms_dosen d ON k.nik = d.nik
             LEFT JOIN ms_mahasiswa s ON k.nim = s.nim";
 }
+
 $result = mysqli_query($conn, $sql);
-// output halaman
-include 'header.php';
+
+// Debug jika query error
+if (!$result) {
+    die('Query Error: ' . mysqli_error($conn));
+}
+
+// Cek apakah ada data
+if (mysqli_num_rows($result) == 0) {
+    echo "<p>Tidak ada data yang ditemukan.</p>";
+    exit();
+}
+
+include '../../header.php';
 ?>
-    <h2>Laporan Jadwal</h2>
-    <p><a href="index.php">Menu Utama</a></p>
-    <table border="1" cellpadding="5" cellspacing="0">
-        <tr>
-            <?php if ($role == 'admin'): ?>
-                <th>ID</th>
-                <th>Mata Kuliah</th>
-                <th>Dosen</th>
-                <th>Mahasiswa</th>
-            <?php elseif ($role == 'dosen'): ?>
-                <th>Mata Kuliah</th>
-            <?php elseif ($role == 'mahasiswa'): ?>
-                <th>Mata Kuliah</th>
-                <th>Dosen</th>
-            <?php endif; ?>
+
+<h2>Laporan Jadwal</h2>
+<p><a href="../../menu_admin.php">Menu Utama</a></p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <?php if ($role == 'admin'): ?>
+            <th>ID</th>
+            <th>Mata Kuliah</th>
+            <th>Kode MK</th>
+            <th>Dosen</th>
+            <th>Mahasiswa</th>
             <th>SKS</th>
             <th>Hari</th>
-        </tr>
-        <?php while($row = mysqli_fetch_assoc($result)): ?>
-        <tr>
-            <?php if ($role == 'admin'): ?>
-                <td><?php echo $row['krs_id']; ?></td>
-                <td><?php echo htmlspecialchars($row['nama_mk']); ?></td>
-                <td><?php echo htmlspecialchars($row['nama_dosen']); ?></td>
-                <td><?php echo htmlspecialchars($row['nama_mhs']); ?></td>
-            <?php elseif ($role == 'dosen'): ?>
-                <td><?php echo htmlspecialchars($row['nama_mk']); ?></td>
-            <?php elseif ($role == 'mahasiswa'): ?>
-                <td><?php echo htmlspecialchars($row['nama_mk']); ?></td>
-                <td><?php echo htmlspecialchars($row['nama_dosen']); ?></td>
-            <?php endif; ?>
+        <?php elseif ($role == 'dosen'): ?>
+            <th>Mata Kuliah</th>
+            <th>Kode MK</th>
+            <th>SKS</th>
+            <th>Hari</th>
+        <?php elseif ($role == 'mahasiswa'): ?>
+            <th>Mata Kuliah</th>
+            <th>Kode MK</th>
+            <th>Dosen</th>
+            <th>SKS</th>
+            <th>Hari</th>
+        <?php endif; ?>
+    </tr>
+
+    <?php while($row = mysqli_fetch_assoc($result)): ?>
+    <tr>
+        <?php if ($role == 'admin'): ?>
+            <td><?php echo $row['krs_id']; ?></td>
+            <td><?php echo htmlspecialchars($row['nama_mk']); ?></td>
+            <td><?php echo htmlspecialchars($row['kode_mk']); ?></td>
+            <td><?php echo htmlspecialchars($row['nama_dosen']); ?></td>
+            <td><?php echo htmlspecialchars($row['nama_mhs']); ?></td>
             <td><?php echo htmlspecialchars($row['sks']); ?></td>
             <td><?php echo htmlspecialchars($row['hari']); ?></td>
-        </tr>
-        <?php endwhile; ?>
-    </table>
-<?php include 'footer.php'; ?>
+        <?php elseif ($role == 'dosen'): ?>
+            <td><?php echo htmlspecialchars($row['nama_mk']); ?></td>
+            <td><?php echo htmlspecialchars($row['kode_mk']); ?></td>
+            <td><?php echo htmlspecialchars($row['sks']); ?></td>
+            <td><?php echo htmlspecialchars($row['hari']); ?></td>
+        <?php elseif ($role == 'mahasiswa'): ?>
+            <td><?php echo htmlspecialchars($row['nama_mk']); ?></td>
+            <td><?php echo htmlspecialchars($row['kode_mk']); ?></td>
+            <td><?php echo htmlspecialchars($row['nama_dosen']); ?></td>
+            <td><?php echo htmlspecialchars($row['sks']); ?></td>
+            <td><?php echo htmlspecialchars($row['hari']); ?></td>
+        <?php endif; ?>
+    </tr>
+    <?php endwhile; ?>
+</table>
+
+<?php include '../../footer.php'; ?>

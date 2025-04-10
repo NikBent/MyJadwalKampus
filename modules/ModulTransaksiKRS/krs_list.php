@@ -1,23 +1,23 @@
 <?php
 // krs_list.php
-require 'config.php';
+require '../../config/config.php';
 // Hanya admin yang dapat mengelola transaksi KRS
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
+    header("Location: ../../login.php");
     exit();
 }
 
-$sql = "SELECT k.*, m.nama AS nama_mk, d.nama AS nama_dosen, s.nama AS nama_mhs
+$sql = "SELECT k.*, m.nama_mk AS nama_mk, d.nama AS nama_dosen, s.nama AS nama_mhs
         FROM krs k
         LEFT JOIN ms_matkul m ON k.kode_mk = m.kode_mk
         LEFT JOIN ms_dosen d ON k.nik = d.nik
         LEFT JOIN ms_mahasiswa s ON k.nim = s.nim";
 $result = mysqli_query($conn, $sql);
 // output halaman
-include 'header.php';
+include '../../header.php';
 ?>
     <h2>Transaksi KRS</h2>
-    <p><a href="krs_add.php">Tambah KRS</a> | <a href="index.php">Menu Utama</a></p>
+    <p><a href="krs_add.php">Tambah KRS</a> | <a href="../../menu_admin.php">Menu Utama</a></p>
     <table border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>ID</th>
@@ -47,4 +47,4 @@ include 'header.php';
         </tr>
         <?php endwhile; ?>
     </table>
-<?php include 'footer.php'; ?>
+<?php include '../../footer.php'; ?>

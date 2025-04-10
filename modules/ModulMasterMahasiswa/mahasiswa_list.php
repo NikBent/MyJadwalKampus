@@ -1,18 +1,18 @@
 <?php
 // mahasiswa_list.php
-require '../config/config.php';
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
+require '../../config/config.php';
+if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
+    header("Location: ../../login.php");
     exit();
 }
 
 $sql = "SELECT * FROM ms_mahasiswa";
 $result = mysqli_query($conn, $sql);
 // output halaman
-include __DIR__ . '/../header.php';
+include '../../header.php';
 ?>
     <h2>Data Mahasiswa</h2>
-    <p><a href="mahasiswa_add.php">Tambah Mahasiswa</a> | <a href="index.php">Menu Utama</a></p>
+    <p><a href="mahasiswa_add.php">Tambah Mahasiswa</a> | <a href="../../menu_admin.php">Menu Utama</a></p>
     <table border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>NIM</th>
@@ -44,4 +44,4 @@ include __DIR__ . '/../header.php';
         </tr>
         <?php endwhile; ?>
     </table>
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include '../../footer.php'; ?>

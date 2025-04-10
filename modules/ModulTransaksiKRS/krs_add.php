@@ -1,11 +1,10 @@
 <?php
 // krs_add.php
-require 'config.php';
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
+require '../../config/config.php';
+if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
+    header("Location: ../../login.php");
     exit();
 }
-
 // Ambil data dropdown untuk mata kuliah, dosen, dan mahasiswa
 $matkul = mysqli_query($conn, "SELECT * FROM ms_matkul");
 $dosen  = mysqli_query($conn, "SELECT * FROM ms_dosen");
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
-include 'header.php';
+include '../../header.php';
 ?>
     <h2>Tambah KRS</h2>
     <form method="post" action="krs_add.php">
@@ -38,7 +37,7 @@ include 'header.php';
         <select name="kode_mk" required>
             <option value="">-- Pilih Mata Kuliah --</option>
             <?php while($row = mysqli_fetch_assoc($matkul)): ?>
-                <option value="<?php echo $row['kode_mk']; ?>"><?php echo $row['nama']; ?></option>
+                <option value="<?php echo $row['kode_mk']; ?>"><?php echo $row['nama_mk']; ?></option>
             <?php endwhile; ?>
         </select><br>
         <label>Dosen:</label><br>
@@ -72,4 +71,4 @@ include 'header.php';
         <button type="submit">Simpan</button>
         <a href="krs_list.php">Batal</a>
     </form>
-<?php include 'footer.php'; ?>
+<?php include '../../footer.php'; ?>

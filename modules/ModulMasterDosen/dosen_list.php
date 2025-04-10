@@ -1,9 +1,9 @@
 <?php
 // dosen_list.php
-require '../config/config.php';
+require '../../config/config.php';
 // Pastikan hanya user dengan role admin yang dapat mengakses
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
+    header("Location: ../../login.php");
     exit();
 }
 
@@ -11,10 +11,10 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
 $sql = "SELECT * FROM ms_dosen";
 $result = mysqli_query($conn, $sql);
 // output halaman
-include 'header.php';
+include '../../header.php';
 ?>
     <h2>Data Dosen</h2>
-    <p><a href="dosen_add.php">Tambah Dosen</a> | <a href="index.php">Menu Utama</a></p>
+    <p><a href="dosen_add.php">Tambah Dosen</a> | <a href="../../menu_admin.php">Menu Utama</a></p>
     <table border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>NIK</th>
@@ -44,4 +44,4 @@ include 'header.php';
         </tr>
         <?php endwhile; ?>
     </table>
-<?php include 'footer.php'; ?>
+<?php include '../../footer.php'; ?>

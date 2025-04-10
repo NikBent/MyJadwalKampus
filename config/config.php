@@ -1,5 +1,6 @@
 <?php
 // config.php
+session_start();
 $host = 'localhost';
 $user = 'root';
 $password = ''; 
@@ -10,5 +11,4 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-session_start();
 ?>

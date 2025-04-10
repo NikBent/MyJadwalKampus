@@ -1,10 +1,35 @@
 <?php
 // krs_edit.php
 require 'config.php';
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
+    header("Location: ../../login.php");
     exit();
 }
+// Add Logs
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $kode_mk  = mysqli_real_escape_string($conn, $_POST['kode_mk']);
+    $nik      = mysqli_real_escape_string($conn, $_POST['nik']);
+    $nim      = mysqli_real_escape_string($conn, $_POST['nim']);
+    $hari     = mysqli_real_escape_string($conn, $_POST['hari']);
+    $ruang    = mysqli_real_escape_string($conn, $_POST['ruang']);
+    $user_input = mysqli_real_escape_string($conn, $_SESSION['username']);
+    $tgl_input  = date('Y-m-d H:i:s');
+
+    $sql_update = "UPDATE krs SET 
+        kode_mk='$kode_mk', nik='$nik', nim='$nim', hari='$hari', ruang='$ruang',
+        user_input='$user_input', tgl_input='$tgl_input'
+        WHERE krs_id='$krs_id'";
+    if (mysqli_query($conn, $sql_update)) {
+        // Log update
+        $log_sql = "INSERT INTO logs (user, action, krs_id, tgl_log) VALUES ('$user_input', 'Update KRS', '$krs_id', '$tgl_input')";
+        mysqli_query($conn, $log_sql);
+        header("Location: krs_list.php");
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
 
 if (!isset($_GET['krs_id'])) {
     header("Location: krs_list.php");

@@ -1,8 +1,8 @@
 <?php
 // mahasiswa_add.php
-require '../config/config.php';
-if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
+require '../../config/config.php';
+if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
+    header("Location: ../../login.php");
     exit();
 }
 
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
-include __DIR__ . '/../header.php';
+include '../../header.php';
 ?>
     <h2>Tambah Mahasiswa</h2>
     <form method="post" action="mahasiswa_add.php">
@@ -49,4 +49,4 @@ include __DIR__ . '/../header.php';
         <button type="submit">Simpan</button>
         <a href="mahasiswa_list.php">Batal</a>
     </form>
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include '../../footer.php'; ?>
