@@ -1,6 +1,6 @@
 <?php
 // krs_edit.php
-require 'config.php';
+require '../../config/config.php';
 if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
     header("Location: ../../login.php");
     exit();
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Error: " . mysqli_error($conn);
     }
 }
-include 'header.php';
+include '../../header.php';
 ?>
     <h2>Edit KRS</h2>
     <form method="post" action="krs_edit.php?krs_id=<?php echo $krs_id; ?>">
@@ -125,4 +125,4 @@ include 'header.php';
         <button type="submit">Update</button>
         <a href="krs_list.php">Batal</a>
     </form>
-<?php include 'footer.php'; ?>
+<?php include '../../footer.php'; ?>

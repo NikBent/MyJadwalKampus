@@ -1,6 +1,6 @@
 <?php
 // mahasiswa_edit.php
-require '../config/config.php';
+require '../../config/config.php';
 if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
     header("Location: ../../login.php");
     exit();
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
-include 'header.php';
+include '../../header.php';
 ?>
     <h2>Edit Mahasiswa</h2>
     <form method="post" action="mahasiswa_edit.php?nim=<?php echo $nim; ?>">
@@ -63,4 +63,4 @@ include 'header.php';
         <button type="submit">Update</button>
         <a href="mahasiswa_list.php">Batal</a>
     </form>
-<?php include 'footer.php'; ?>
+<?php include '../../footer.php'; ?>

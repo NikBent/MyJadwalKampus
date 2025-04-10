@@ -1,6 +1,6 @@
 <?php
 // matkul_delete.php
-require 'config.php';
+require '../../config/config.php';
 if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin') {
     header("Location: ../../login.php");
     exit();
