@@ -1,0 +1,45 @@
+/* header.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    background-color: #3498db; /* Nice blue */
+    color: white;
+    padding: 20px 40px; /* Padding around the header */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;          /* Make header items in a row */
+    align-items: center;    /* Center vertically */
+    gap: 20px;              /* Space between logo and text */
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: azure;
+}
+
+.header p {
+    margin: 10px 0 0;
+    font-size: 1.5rem;
+    color: beige;
+    margin-left: auto;
+}
+
+/* Optional: Make the header sticky if you want */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.logo {
+    width: 50px;            /* Adjust size as needed */
+    height: 50px;
+    object-fit: cover;      /* Make sure image looks good */
+}

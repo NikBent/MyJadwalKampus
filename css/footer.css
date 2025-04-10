@@ -1,0 +1,15 @@
+/* footer.css */
+
+.footer {
+    background-color: #3498db; /* Same blue as header */
+    color: white;
+    padding: 20px 40px; /* Same padding as header */
+    text-align: center;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.1); /* Shadow on top */
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: aliceblue;
+}

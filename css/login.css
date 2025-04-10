@@ -1,0 +1,84 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fcf5f5;
+  color: #333;
+}
+
+/* Container */
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title */
+.login-container h1 {
+  margin-bottom: 30px;
+  color: #1A4C84;
+}
+
+/* Error Message */
+.error {
+  background-color: #ffd6d6;
+  color: #b10000;
+  border: 1px solid #b10000;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Form Elements */
+form {
+  text-align: left;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  margin-top: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="password"],
+form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Submit Button */
+form input[type="submit"] {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  background-color: #1A4C84;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: #143b66;
+}

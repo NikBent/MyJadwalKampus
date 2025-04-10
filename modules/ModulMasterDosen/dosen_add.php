@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
-include '../../header.php'; 
+include './header.php'; 
 ?>
     <h2>Tambah Dosen</h2>
     <form method="post" action="dosen_add.php">
@@ -45,4 +45,4 @@ include '../../header.php';
         <button type="submit">Simpan</button>
         <a href="dosen_list.php">Batal</a>
     </form>
-<?php include '../../footer.php'; ?>
+<?php include './footer.php'; ?>

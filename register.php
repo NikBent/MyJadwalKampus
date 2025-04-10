@@ -58,7 +58,7 @@ if (isset($_POST['register'])) {
     <meta charset="UTF-8">
     <title>Register - Daftar Akun</title>
     <!-- Jika ada file CSS global -->
-    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 <?php include 'header.php'; // output halaman?>

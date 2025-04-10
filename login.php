@@ -1,7 +1,7 @@
 <?php
 // login.php
 
-require_once 'config/config.php';
+require_once './config/config.php';
 
 $error = '';
 
@@ -46,9 +46,10 @@ if (isset($_POST['login'])) {
     }
 }
 // output halaman
+$login_css = true;
 include 'header.php';
 ?>
-<link rel="stylesheet" href="assets/css/login.css">
+<main style="min-height: 80vh;">
 <div class="login-container">
     <h1>Login</h1>
     <?php if ($error): ?>
@@ -72,4 +73,5 @@ include 'header.php';
         <input type="submit" name="login" value="Login">
     </form>
 </div>
+</main>
 <?php include 'footer.php'; ?>
