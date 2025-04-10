@@ -61,7 +61,6 @@ include './header.php';
 ?>
 
 <h2>Laporan Jadwal</h2>
-<p><a href="../../menu_admin.php">Menu Admin</a></p>
 
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>

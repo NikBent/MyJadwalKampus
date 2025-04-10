@@ -17,9 +17,8 @@ include 'header.php';
 <main style="min-height: 80vh;"> 
     <div class="container">
         <h1>Selamat Datang di Portal Akademik</h1>
-        <p>Silakan login atau register untuk melanjutkan ke sistem.</p>
+        <p>Silakan login untuk melanjutkan ke sistem.</p>
         <a class="btn btn-login" href="login.php">Login</a>
-        <a class="btn btn-register" href="register.php">Register</a>
     </div>
 </main>
 </body>
