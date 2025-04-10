@@ -13,8 +13,9 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" href="/MyJadwalKampus/css/header.css"> 
     <?php
 $styles = [
-    'login_css' => 'css/login.css',
-    'menuAdmin_css' => 'css/menu_admin.css'
+    'login_css' => '/MyJadwalKampus/css/login.css',
+    'menuAdmin_css' => '/MyJadwalKampus/css/menu_admin.css',
+    'master_css' => '/MyJadwalKampus/css/master.css',
 ];
 
 foreach ($styles as $key => $href) {

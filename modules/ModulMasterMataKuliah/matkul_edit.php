@@ -38,17 +38,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
+$master_css = true;
 include '../../header.php';
 ?>
 <main style="min-height: 80vh;"> 
     <h2>Edit Mata Kuliah</h2>
     <form method="post" action="matkul_edit.php?kode_mk=<?php echo $kode_mk; ?>">
-        <label>Nama Mata Kuliah:</label><br>
-        <input type="text" name="nama_mk" value="<?php echo htmlspecialchars($matkul['nama_mk']); ?>" required><br>
-        <label>SKS:</label><br>
-        <input type="number" name="sks" value="<?php echo htmlspecialchars($matkul['sks']); ?>" required><br>
-        <button type="submit">Update</button>
-        <a href="matkul_list.php">Batal</a>
-    </form>
+    <button class="menu-button" type="button" disabled>Nama Mata Kuliah:</button><br>
+    <input type="text" name="nama_mk" value="<?php echo htmlspecialchars($matkul['nama_mk']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>SKS:</button><br>
+    <input type="number" name="sks" value="<?php echo htmlspecialchars($matkul['sks']); ?>" required><br><br>
+
+    <button class="menu-button" type="submit">Update</button>
+    <button class="signout" type="button" onclick="window.location.href='matkul_list.php'">Batal</button>
+</form>
 </main>
 <?php include '../../footer.php'; ?>

@@ -44,24 +44,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
-include 'header.php';
+$master_css = true;
+include '../../header.php';
 ?>
 <main style="min-height: 80vh;"> 
     <h2>Edit Dosen</h2>
     <form method="post" action="dosen_edit.php?nik=<?php echo $nik; ?>">
-        <label>Nama:</label><br>
-        <input type="text" name="nama" value="<?php echo htmlspecialchars($dosen['nama']); ?>" required><br>
-        <label>Email:</label><br>
-        <input type="email" name="email" value="<?php echo htmlspecialchars($dosen['email']); ?>" required><br>
-        <label>No HP:</label><br>
-        <input type="text" name="no_hp" value="<?php echo htmlspecialchars($dosen['no_hp']); ?>" required><br>
-        <label>Gelar:</label><br>
-        <input type="text" name="gelar" value="<?php echo htmlspecialchars($dosen['gelar']); ?>" required><br>
-        <label>Lulusan:</label><br>
-        <input type="text" name="lulusan" value="<?php echo htmlspecialchars($dosen['lulusan']); ?>" required><br>
-        <br>
-        <button type="submit">Update</button>
-        <a href="dosen_list.php">Batal</a>
-    </form>
+    <button class="menu-button" type="button" disabled>Nama:</button><br>
+    <input type="text" name="nama" value="<?php echo htmlspecialchars($dosen['nama']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>Email:</button><br>
+    <input type="email" name="email" value="<?php echo htmlspecialchars($dosen['email']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>No HP:</button><br>
+    <input type="text" name="no_hp" value="<?php echo htmlspecialchars($dosen['no_hp']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>Gelar:</button><br>
+    <input type="text" name="gelar" value="<?php echo htmlspecialchars($dosen['gelar']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>Lulusan:</button><br>
+    <input type="text" name="lulusan" value="<?php echo htmlspecialchars($dosen['lulusan']); ?>" required><br><br>
+
+    <button class="menu-button" type="submit">Update</button>
+    <button class="signout" type="button" onclick="window.location.href='dosen_list.php'">Batal</button>
+</form>
 </main>
-<?php include 'footer.php'; ?>
+<?php include '../../footer.php'; ?>

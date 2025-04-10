@@ -27,28 +27,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
+$master_css = true;
 include '../../header.php';
 ?>
 <main style="min-height: 80vh;"> 
     <h2>Tambah Mahasiswa</h2>
     <form method="post" action="mahasiswa_add.php">
-        <label>NIM:</label><br>
-        <input type="text" name="nim" required><br>
-        <label>Nama:</label><br>
-        <input type="text" name="nama" required><br>
-        <label>Jurusan:</label><br>
-        <input type="text" name="jurusan" required><br>
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br>
-        <label>No HP:</label><br>
-        <input type="text" name="no_Hp" required><br>
-        <label>Alamat:</label><br>
-        <input type="text" name="alamat" required><br>
-        <label>Angkatan:</label><br>
-        <input type="number" name="angkatan" required><br>
-        <br>
-        <button type="submit">Simpan</button>
-        <a href="mahasiswa_list.php">Batal</a>
-    </form>
+    <button class="menu-button" type="button" disabled>NIM:</button><br>
+    <input type="text" name="nim" required><br>
+
+    <button class="menu-button" type="button" disabled>Nama:</button><br>
+    <input type="text" name="nama" required><br>
+
+    <button class="menu-button" type="button" disabled>Jurusan:</button><br>
+    <input type="text" name="jurusan" required><br>
+
+    <button class="menu-button" type="button" disabled>Email:</button><br>
+    <input type="email" name="email" required><br>
+
+    <button class="menu-button" type="button" disabled>No HP:</button><br>
+    <input type="text" name="no_Hp" required><br>
+
+    <button class="menu-button" type="button" disabled>Alamat:</button><br>
+    <input type="text" name="alamat" required><br>
+
+    <button class="menu-button" type="button" disabled>Angkatan:</button><br>
+    <input type="number" name="angkatan" required><br><br>
+
+    <button class="menu-button" type="submit">Simpan</button>
+    <button class="signout" type="button" onclick="window.location.href='mahasiswa_list.php'">Batal</button>
+</form>
+
 </main>
 <?php include '../../footer.php'; ?>

@@ -11,6 +11,7 @@ if (!isset($_SESSION['user']['username']) || $_SESSION['user']['role'] != 'admin
 $sql = "SELECT * FROM ms_dosen";
 $result = mysqli_query($conn, $sql);
 // output halaman
+$master_css = true;
 include '../../header.php';
 ?>
     <main style="min-height: 80vh;"> 

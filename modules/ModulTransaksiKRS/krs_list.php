@@ -14,6 +14,7 @@ $sql = "SELECT k.*, m.nama_mk AS nama_mk, d.nama AS nama_dosen, s.nama AS nama_m
         LEFT JOIN ms_mahasiswa s ON k.nim = s.nim";
 $result = mysqli_query($conn, $sql);
 // output halaman
+$master_css = true;
 include '../../header.php';
 ?>
 <main style="min-height: 80vh;"> 

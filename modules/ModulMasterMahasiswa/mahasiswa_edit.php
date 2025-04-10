@@ -43,26 +43,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 // output halaman
+$master_css = true;
 include '../../header.php';
 ?>
 <main style="min-height: 80vh;"> 
     <h2>Edit Mahasiswa</h2>
     <form method="post" action="mahasiswa_edit.php?nim=<?php echo $nim; ?>">
-        <label>Nama:</label><br>
-        <input type="text" name="nama" value="<?php echo htmlspecialchars($mahasiswa['nama']); ?>" required><br>
-        <label>Jurusan:</label><br>
-        <input type="text" name="jurusan" value="<?php echo htmlspecialchars($mahasiswa['jurusan']); ?>" required><br>
-        <label>Email:</label><br>
-        <input type="email" name="email" value="<?php echo htmlspecialchars($mahasiswa['email']); ?>" required><br>
-        <label>No HP:</label><br>
-        <input type="text" name="no_Hp" value="<?php echo htmlspecialchars($mahasiswa['no_Hp']); ?>" required><br>
-        <label>Alamat:</label><br>
-        <input type="text" name="alamat" value="<?php echo htmlspecialchars($mahasiswa['alamat']); ?>" required><br>
-        <label>Angkatan:</label><br>
-        <input type="number" name="angkatan" value="<?php echo htmlspecialchars($mahasiswa['angkatan']); ?>" required><br>
-        <br>
-        <button type="submit">Update</button>
-        <a href="mahasiswa_list.php">Batal</a>
-    </form>
+    <button class="menu-button" type="button" disabled>Nama:</button><br>
+    <input type="text" name="nama" value="<?php echo htmlspecialchars($mahasiswa['nama']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>Jurusan:</button><br>
+    <input type="text" name="jurusan" value="<?php echo htmlspecialchars($mahasiswa['jurusan']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>Email:</button><br>
+    <input type="email" name="email" value="<?php echo htmlspecialchars($mahasiswa['email']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>No HP:</button><br>
+    <input type="text" name="no_Hp" value="<?php echo htmlspecialchars($mahasiswa['no_Hp']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>Alamat:</button><br>
+    <input type="text" name="alamat" value="<?php echo htmlspecialchars($mahasiswa['alamat']); ?>" required><br>
+
+    <button class="menu-button" type="button" disabled>Angkatan:</button><br>
+    <input type="number" name="angkatan" value="<?php echo htmlspecialchars($mahasiswa['angkatan']); ?>" required><br><br>
+
+    <button class="menu-button" type="submit">Update</button>
+    <button class="signout" type="button" onclick="window.location.href='mahasiswa_list.php'">Batal</button>
+</form>
+
 </main>
 <?php include '../../footer.php'; ?>
